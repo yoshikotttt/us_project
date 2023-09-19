@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div>〇〇さん</div>
-    <div>受託アクティブ  30人</div>
-
+<x-app-layout>
     <div>
-        <h3>検査を依頼したい</h3>
-        <button>心臓</button>
-         <button ><a href="{{ route('search') }}">腹部（上腹部）</button>
-          <button>腹部（下腹部）</button>
-           <button>表在</button>
+        <button class="button"><a href="{{ route('detail') }}" class="button">詳細入力</button>
+        <div class="user-info">
+            受託アクティブ 30人
+        </div>
+
+        <div class="mt-4">
+            <h3 class="text-xl text-blue-500 mb-2">検査を依頼したい</h3>
+            <button class="button">心臓</button>
+            <a href="{{ route('search') }}" class="button">腹部（上腹部）</a>
+            <button class="button">腹部（下腹部）</button>
+            <button class="button">表在</button>
+        </div>
     </div>
-</body>
-</html>
+</x-app-layout>

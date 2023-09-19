@@ -22,11 +22,25 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'speciality',
+        'is_requester',
+        'specialty',
         'qualification_year_1',
         'qualification_year_2',
         'notes',
     ];
+
+ public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
+
+
+
+
+
+
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -47,4 +61,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+
+
 }

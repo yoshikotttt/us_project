@@ -4,11 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; //Add
 use App\Http\Controllers\BookController; //Add
-
-
+use App\Http\Controllers\MedicalExamController;
+use App\Http\Controllers\UserController;
 
 Route::get('/dashboard', function () {
-   return view('dashboard');
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -20,17 +20,39 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/login', function () {  return view('auth.login');}); 
-    Route::get('/skyway', function () {  return view('skyway');})->name('skyway'); 
 
 
-    Route::get('/', function () {return view('home');});
-    Route::get('/data-form', function () {return view('data-form');});
-    Route::get('/search', function () {return view('search');})->name('search');
-    Route::get('/process', function () {return view('process');})->name('process');
+    Route::resource('/process', MedicalExamController::class);
 
 
+    Route::get('/search', [UserController::class, 'index'])->name('search');
+    Route::get('/form-detail', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/form-detail', [UserController::class, 'update'])->name('user.update');
 
+    // 仮ルート
+    Route::get('/data-form', function () {
+        return view('data-form');
+    });
+
+    Route::get('/', function () {
+        return view('home');
+    })->name('home');
+
+    Route::get('/form-detail', function () {
+        return view('form-detail');
+    })->name('detail');
+
+    Route::get('/process', function () {
+        return view('process');
+    })->name('process');
+
+    Route::get('/login', function () {
+        return view('auth.login');
+    });
+
+    Route::get('/skyway', function () {
+        return view('skyway');
+    })->name('skyway');
 });
 
 require __DIR__ . '/auth.php';
@@ -53,7 +75,7 @@ require __DIR__ . '/auth.php';
 
 
 // //本：ダッシュボード表示(books.blade.php)
-Route::get('/', [BookController::class, 'index'])->middleware(['auth'])->name('book_index');
+// Route::get('/', [BookController::class, 'index'])->middleware(['auth'])->name('book_index');
 // Route::get('/dashboard', [BookController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 // //本：追加 

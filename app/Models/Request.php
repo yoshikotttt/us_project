@@ -10,30 +10,24 @@ class Request extends Model
     use HasFactory;
 
     protected $fillable = [
-        'requesting_user_id',
-        'accepting_user_id',
+        'request_user_id',
+        'accept_user_id',
+        'medical_exams_id',
         'request_message',
         'request_type',
         'request_status',
-        'age',
-        'gender',
-        'chief_complaint',
-        'medical_history',
-        'vitals',
-        'skyway_id_1',
-        'skyway_id_2',
     ];
 
-     public function requestingUser()
+     public function users()
     {
-        return $this->belongsTo(User::class, 'requesting_user_id');
+        return $this->belongsTo(User::class);
     }
 
     /**
      * リクエストを受けたユーザーへのリレーション
      */
-    public function acceptingUser()
-    {
-        return $this->belongsTo(User::class, 'accepting_user_id');
-    }
+   public function medical_exam()
+{
+    return $this->hasOne(MedicalExam::class);
+}
 }
