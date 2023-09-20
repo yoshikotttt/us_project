@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MedicalExam;
+use App\Models\Request as ModelsRequest;
 use Illuminate\Http\Request;
 
 class MedicalExamController extends Controller
@@ -12,7 +13,7 @@ class MedicalExamController extends Controller
      */
     public function index()
     {
-        //
+        return view('process');
     }
 
     /**
@@ -36,12 +37,11 @@ class MedicalExamController extends Controller
             'vitals' => 'nullable|string',
         ]);
 
-        // フォームデータを使って MedicalExam モデルを作成して保存
-       MedicalExam::create($data);
+        // フォームデータを使って MedicalExam モデルを作成して保存し、保存したデータを取得
+        $exam = MedicalExam::create($data);
 
-        // データの保存が成功したらリダイレクト
-        return redirect()->route('home')
-            ->with('success', '検査情報が保存されました。');
+        return view('skyway', ['exam' => $exam, 'hideSidebar' => true]);
+
     
     }
 
@@ -53,6 +53,19 @@ class MedicalExamController extends Controller
         //
     }
 
+    public function showLatest()
+    {
+        $exam = MedicalExam::latest()->first();
+
+        if (!$exam) {
+            return redirect('form-detail')->with('error', 'Medical Exam data not found.');
+        }
+
+        return view('skyway', ['exam' => $exam, 'hideSidebar' => true]);
+
+      
+        
+    }
     /**
      * Show the form for editing the specified resource.
      */

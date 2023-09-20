@@ -22,8 +22,10 @@ Route::middleware('auth')->group(function () {
 
 
 
-    Route::resource('/process', MedicalExamController::class);
+    Route::resource('process', MedicalExamController::class);
 
+
+    Route::get('/skyway', [MedicalExamController::class, 'showLatest'])->name('skyway');
 
     Route::get('/search', [UserController::class, 'index'])->name('search');
     Route::get('/form-detail', [UserController::class, 'edit'])->name('user.edit');
@@ -42,10 +44,6 @@ Route::middleware('auth')->group(function () {
         return view('form-detail');
     })->name('detail');
 
-    Route::get('/process', function () {
-        return view('process');
-    })->name('process');
-
     Route::get('/login', function () {
         return view('auth.login');
     });
@@ -53,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/skyway', function () {
         return view('skyway');
     })->name('skyway');
+
 });
 
 require __DIR__ . '/auth.php';
@@ -74,7 +73,7 @@ require __DIR__ . '/auth.php';
 
 
 
-// //本：ダッシュボード表示(books.blade.php)
+//本：ダッシュボード表示(books.blade.php)
 // Route::get('/', [BookController::class, 'index'])->middleware(['auth'])->name('book_index');
 // Route::get('/dashboard', [BookController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
