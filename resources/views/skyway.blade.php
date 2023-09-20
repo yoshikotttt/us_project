@@ -1,14 +1,29 @@
-<x-app-layout>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <!--ヘッダー[START]-->
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <form action="{{ route('book_index') }}" method="GET" class="w-full max-w-lg">
-                <x-button class="bg-gray-100 text-gray-900">{{ __('Dashboard') }}</x-button>
-            </form>
-        </h2>
-    </x-slot> --}}
-    <!--ヘッダー[END]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+</head>
+
+<body class="font-sans antialiased bg-gray-100">
+    <!-- Page Heading -->
+    @include('layouts.navigation')
 
     <!-- バリデーションエラーの表示に使用-->
     <x-errors id="errors" class="bg-blue-500 rounded-lg">{{ $errors }}</x-errors>
@@ -22,8 +37,8 @@
         <script src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
         <!-- Include the following line to use Tailwind CSS -->
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-        <body class="bg-gray-100">
+{{-- 
+        <body class="bg-gray-100"> --}}
             <div class="container mx-auto py-10">
                 <div class="grid grid-cols-3 gap-6">
                     <div class="col-span-2">
@@ -52,6 +67,9 @@
                         </div>
                     </div>
                 </div>
+
+ {{-- footer --}}
+    @include('layouts.footer')
 
                 <script>
                     const peer = new Peer({
@@ -131,6 +149,8 @@
                     });
                 </script>
 
+</body>
+
+</html>
 
 
-</x-app-layout>

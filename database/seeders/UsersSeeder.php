@@ -88,7 +88,7 @@ class UsersSeeder extends Seeder
                 'role' => 'user',
                 'is_requester' => 1,
                 'specialty' => '心臓血管',
-                'qualification_year_1' => '超音波専門医（東京） 心臓',
+                'qualification_year_1' => '超音波専門医（東京） 腹部/上腹部',
                 'qualification_year_2' => '2021',
                 'notes' => 'Notes for User6',
                 'created_at' => now(),
