@@ -40,7 +40,9 @@ class MedicalExamController extends Controller
         // フォームデータを使って MedicalExam モデルを作成して保存し、保存したデータを取得
         $exam = MedicalExam::create($data);
 
-        return view('skyway', ['exam' => $exam, 'hideSidebar' => true]);
+        $skywayApiKey = env('SKYWAY_API_KEY');
+
+        return view('skyway', ['exam' => $exam, 'hideSidebar' =>true, 'skywayApiKey' => $skywayApiKey]);
 
     
     }
@@ -61,7 +63,9 @@ class MedicalExamController extends Controller
             return redirect('form-detail')->with('error', 'Medical Exam data not found.');
         }
 
-        return view('skyway', ['exam' => $exam, 'hideSidebar' => true]);
+      
+
+        return view('skyway', ['exam' => $exam]);
 
       
         

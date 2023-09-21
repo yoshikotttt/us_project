@@ -31,13 +31,11 @@
 
         <div class="content-wrapper max-w-7xl mx-auto">
             <!-- Sidebar -->
-          @if(!isset($hideSidebar) || !$hideSidebar)
-                <!-- この条件を追加 -->
+         
                 <aside class="sidebar">
                     @include('layouts.sidebar') <!-- ここでサイドバーをインクルード -->
                 </aside>
-            @endif
-
+         
             <!-- Main Content -->
             <main class="main-content min-h-[650px]">
                 {{ $slot }}
