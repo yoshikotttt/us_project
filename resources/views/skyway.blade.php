@@ -40,8 +40,8 @@
         {{-- 
         <body class="bg-gray-100"> --}}
         <div class="container mx-auto py-10">
-            <div class="grid grid-cols-3 gap-6">
-                <div class="col-span-2">
+            <div class="grid grid-cols-2 gap-6">
+                <div class="col-span-1">
                     <div class="bg-white p-4 rounded shadow h-screen">
                         <video id="my-video" class="w-full rounded" autoplay muted playsinline></video>
                         <p id="my-id" class="mt-2 font-semibold"></p>
@@ -73,7 +73,7 @@
 
             <script>
                 const peer = new Peer({
-                    key:"{{ $skywayApiKey }}",
+                    key: "{{ $skywayApiKey }}",
                     debug: 3
                 });
 
@@ -112,6 +112,11 @@
                         const videoElm = document.getElementById('my-video');
                         videoElm.srcObject = screenStream;
                         videoElm.play();
+                        const theirID = document.getElementById('their-id').value;
+                        if (theirID) {
+                            const mediaConnection = peer.call(theirID, screenStream);
+                            setEventListener(mediaConnection);
+                        }
                     } catch (error) {
                         console.error('getDisplayMedia() error:', error);
                     }
