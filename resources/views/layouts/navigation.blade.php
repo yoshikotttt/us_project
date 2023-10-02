@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('dashboard')">
                         {{ __('HOME') }}
                     </x-nav-link>
+                     <x-nav-link :href="route('form-detail')" :active="request()->routeIs('dashboard')">
+                        {{ __('プロフィール編集') }}
+                    </x-nav-link>
                 </div>
             </div>
             
@@ -84,6 +87,7 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+                
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

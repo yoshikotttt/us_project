@@ -4,7 +4,7 @@
       <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
        <img src="{{ asset('images/icon.png') }}" alt="us_projectのicon" width="40" height="40">
          
-        <span class="ml-3 text-xl">Tesshy</span>
+        <span class="ml-3 text-xl"></span>
       </a>
       <p class="mt-2 text-sm text-gray-500">My passion for ultrasonography is second to none.</p>
     </div>

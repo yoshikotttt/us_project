@@ -2,9 +2,10 @@
 
     {{-- <h3 class="text-center">依頼結果</h3> --}}
     {{-- <p>{{ $message }}</p> --}}
+    
     <div
         class="user-info mb-4 mx-20 mt-10 text-xl text-center bg-emerald-200 h-14 rounded-xl flex items-center justify-center">
-        依頼が完了しました</div>
+        {{ $selectedUser->name }}　さんへ依頼が完了しました</div>
     <br>
 
     <div class="container text-center">
