@@ -12,12 +12,12 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($type)
     {
-        $users = User::all();
+        $users = User::where('qualification_year_1', 'LIKE', '%' . $type . '%')->get();
 
 
-        return view('search', ['users' => $users]);
+        return view('search', compact('users'));
     }
 
     /**
@@ -69,7 +69,7 @@ class UserController extends Controller
         $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'role' => 'required|string',
+            // 'role' => 'required|string',
             'is_requester' => 'required|integer',
             'specialty' => 'required|string',
             'qualification_year_1' => 'required|string',
@@ -89,4 +89,12 @@ class UserController extends Controller
     {
         //
     }
+
+    public function selectedUser(Request $request)
+    {
+        $selectedUserId = $request->input('selected_user');
+        $selectedUser = User::find($selectedUserId);
+        return view('process', compact('selectedUser'));
+    }
+
 }

@@ -24,10 +24,14 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('process', MedicalExamController::class);
 
+    Route::post('/process', [MedicalExamController::class, 'store'])->name('process.store');
+    Route::get('/process', [UserController::class, 'selectedUser'])->name('process.select');
+
+
 
     Route::get('/skyway', [MedicalExamController::class, 'showLatest'])->name('skyway');
 
-    Route::get('/search', [UserController::class, 'index'])->name('search');
+    Route::get('/search/{type}', [UserController::class, 'index'])->name('search');
     Route::get('/form-detail', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/form-detail', [UserController::class, 'update'])->name('user.update');
 
@@ -42,7 +46,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/form-detail', function () {
         return view('form-detail');
-    })->name('detail');
+    })->name('form-detail');
 
     Route::get('/login', function () {
         return view('auth.login');

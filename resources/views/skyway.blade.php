@@ -59,10 +59,10 @@
                         <video id="their-video" class="w-full rounded" autoplay muted playsinline></video>
                         {{-- <ul id="output" class="mt-4 h-96 overflow-y-auto space-y-2"></ul> --}}
                         <div>
-                            <p>{{ $exam->age }}</p>
-                            <p>{{ $exam->gender }}</p>
-                            <p>{{ $exam->chief_complaint }}</p>
-                            <p>{{ $exam->medical_history }}</p>
+                            <p>年齢：{{ $exam->age }}</p>
+                            <p>性別：{{ $exam->gender }}</p>
+                            <p>主訴：{{ $exam->chief_complaint }}</p>
+                            <p>既往歴：{{ $exam->medical_history }}</p>
                         </div>
                     </div>
                 </div>
