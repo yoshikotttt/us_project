@@ -16,8 +16,8 @@ class UsersSeeder extends Seeder
     {
         $users = [
             [
-                 'name' => '田中 智彦',
-                'email' => 'user1@example.com',
+                'name' => '手嶋 敏裕',
+                'email' => 't.teshima.6.21@gmail.com',
                 'password' => Hash::make('12345678'),
                 'role' => 'user',
                 'is_requester' => 1,
@@ -29,7 +29,7 @@ class UsersSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                 'name' => '山本 美優',
+                'name' => '山本 美優',
                 'email' => 'user2@example.com',
                 'password' => Hash::make('12345678'),
                 'role' => 'user',
@@ -42,7 +42,7 @@ class UsersSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                 'name' => '佐藤 一郎',
+                'name' => '佐藤 一郎',
                 'email' => 'user3@example.com',
                 'password' => Hash::make('12345678'),
                 'role' => 'user',

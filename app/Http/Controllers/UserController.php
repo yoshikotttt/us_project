@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\Offermail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -94,6 +96,9 @@ class UserController extends Controller
     {
         $selectedUserId = $request->input('selected_user');
         $selectedUser = User::find($selectedUserId);
+        Mail::to($selectedUser)->send(new Offermail($request->user()));
+
+        // 'qualification_year_1' => '超音波検査士（九州） 腹部/上腹部/下腹部',
         return view('process', compact('selectedUser'));
     }
 

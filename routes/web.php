@@ -30,6 +30,13 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/skyway', [MedicalExamController::class, 'showLatest'])->name('skyway');
+    // Route::view('/skyway2', 'skyway2');
+    Route::view('/skyway2', 'skyway2', ['skywayApiKey' => env('SKYWAY_API_KEY')]);
+
+
+    // 下は試しです 2023.10.10.2140.//////////////////////////////////////
+    Route::get('/skyway_new/{id}', [MedicalExamController::class, 'showById'])->name('skyway_new');
+    // 上まで試しです///////////////////////////////////////////////////////
 
     Route::get('/search/{type}', [UserController::class, 'index'])->name('search');
     Route::get('/form-detail', [UserController::class, 'edit'])->name('user.edit');
@@ -55,45 +62,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/skyway', function () {
         return view('skyway');
     })->name('skyway');
-
 });
 
 require __DIR__ . '/auth.php';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//本：ダッシュボード表示(books.blade.php)
-// Route::get('/', [BookController::class, 'index'])->middleware(['auth'])->name('book_index');
-// Route::get('/dashboard', [BookController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
-// //本：追加 
-// Route::post('/books', [BookController::class, "store"])->name('book_store');
-
-// //本：削除 
-// Route::delete('/book/{book}', [BookController::class, "destroy"])->name('book_destroy');
-
-// //本：更新画面
-// Route::post('/booksedit/{book}', [BookController::class, "edit"])->name('book_edit'); //通常
-// Route::get('/booksedit/{book}', [BookController::class, "edit"])->name('edit');      //Validationエラーありの場合
-
-// //本：更新画面
-// Route::post('/books/update', [BookController::class, "update"])->name('book_update');
-
-/**
- * 「ログイン機能」インストールで追加されています 
- */

@@ -61,12 +61,12 @@
 
                          
                         {{-- 2023.10.10.21.上に変更した --}}
-                        <div>
+                        {{-- <div>
                             <p>年齢：{{ $exam->age }}</p>
                             <p>性別：{{ $exam->gender }}</p>
                             <p>主訴：{{ $exam->chief_complaint }}</p>
                             <p>既往歴：{{ $exam->medical_history }}</p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

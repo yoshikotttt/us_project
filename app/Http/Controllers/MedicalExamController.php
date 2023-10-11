@@ -42,11 +42,27 @@ class MedicalExamController extends Controller
 
         $skywayApiKey = env('SKYWAY_API_KEY');
 
-        return view('skyway', ['exam' => $exam, 'hideSidebar' =>true, 'skywayApiKey' => $skywayApiKey]);
-
-    
+        return view('skyway', ['exam' => $exam, 'hideSidebar' => true, 'skywayApiKey' => $skywayApiKey]);
     }
 
+    // この下試しです。2023.10.10.21.43/////////////////////////////////
+    public function showById($id)
+    {
+        $exam = MedicalExam::find($id);
+
+        if (!$exam) {
+            return redirect()->back()->with('error', 'Medical Exam not found.');
+        }
+
+        $skywayApiKey = env('SKYWAY_API_KEY');
+
+        // 以下の行で、$exam が null でないことを再確認します。
+        assert($exam !== null, "Unexpected state: $exam is null.");
+        
+        return view('skyway', ['exam' => $exam, 'skywayApiKey' => $skywayApiKey]);
+    }
+
+    // この上試しです。////////////////////////////////////////////////
     /**
      * Display the specified resource.
      */
@@ -63,12 +79,7 @@ class MedicalExamController extends Controller
             return redirect('form-detail')->with('error', 'Medical Exam data not found.');
         }
 
-      
-
         return view('skyway', ['exam' => $exam]);
-
-      
-        
     }
     /**
      * Show the form for editing the specified resource.
