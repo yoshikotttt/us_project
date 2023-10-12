@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; //Add
 use App\Http\Controllers\BookController; //Add
 use App\Http\Controllers\MedicalExamController;
+use App\Http\Controllers\SkywayController;
 use App\Http\Controllers\UserController;
 
 Route::get('/dashboard', function () {
@@ -31,7 +32,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/skyway', [MedicalExamController::class, 'showLatest'])->name('skyway');
     // Route::view('/skyway2', 'skyway2');
-    Route::view('/skyway2', 'skyway2', ['skywayApiKey' => env('SKYWAY_API_KEY')]);
+    // Route::view('/skyway2', 'skyway2', ['skywayApiKey' => env('SKYWAY_API_KEY')]);
+    Route::get('/skyway2', [SkywayController::class, 'showSkyway2']);
 
 
     // 下は試しです 2023.10.10.2140.//////////////////////////////////////
