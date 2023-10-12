@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/skyway', [MedicalExamController::class, 'showLatest'])->name('skyway');
     // Route::view('/skyway2', 'skyway2');
     // Route::view('/skyway2', 'skyway2', ['skywayApiKey' => env('SKYWAY_API_KEY')]);
-    Route::get('/skyway2', [SkywayController::class, 'showSkyway2']);
+    Route::get('/skyway2', [SkywayController::class, 'showSkyway2'])->name('skyway2');;
 
 
     // 下は試しです 2023.10.10.2140.//////////////////////////////////////
