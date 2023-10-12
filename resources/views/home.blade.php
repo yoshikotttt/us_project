@@ -24,7 +24,7 @@
                     <!-- 新たに「検査を受託する」ボタンを追加 -->
                 <div class="mt-10">
                     {{-- 10.10.22.33修正 --}}
-                    <a href="{{ route('skyway2')}}" class="h-14 w-40 shadow-lg bg-green-500 hover:bg-green-600 shadow-green-500/50 hover:shadow-green-600/50 text-white rounded px-2 py-1 transition duration-300 ease-in-out">
+                    <a href="{{ route('skyway2') }}" class="h-14 w-40 shadow-lg bg-green-500 hover:bg-green-600 shadow-green-500/50 hover:shadow-green-600/50 text-white rounded px-2 py-1 transition duration-300 ease-in-out">
     検査を受託する
 </a>
 
